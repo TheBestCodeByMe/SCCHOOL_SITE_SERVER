@@ -8,6 +8,13 @@
         <version>2.6.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <distributionManagement>
+        <repository>
+            <id>uliaKolosovich</id>
+            <name>Central Repository Ulia Kolosovich</name>
+            <url>https://github.com/TheBestCodeByMe/SCCHOOL_SITE_SERVER.git</url>
+        </repository>
+    </distributionManagement>
     <groupId>com.example</groupId>
     <artifactId>SchoolSite</artifactId>
     <version>0.0.1-SNAPSHOT</version>
