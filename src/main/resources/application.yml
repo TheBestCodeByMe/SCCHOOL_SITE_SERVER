@@ -16,11 +16,11 @@
 #    password: ${DB_PASSWORD:4ea0b60ff37d4a139584309f8} #edit
 #    url: ${DB URL:r2dbc:pool:postgresql://ulia-dev.smartsafeschool.com:5432/dev_school_db} #edit
 
-spring:
-  r2dbc:
-    host: ${DB_HOST:127.0.0.1}
-    port: 5432
-    database: dev_school_db
-    username: ${DB_USER_NAME:dev_school_admin} #edit
-    password: ${DB_PASSWORD:4ea0b60ff37d4a139584309f8} #edit
-    url: ${DB URL:r2dbc:pool:postgresql://ulia-dev.smartsafeschool.com:5432/dev_school_db} #edit
+#spring:
+#  r2dbc:
+#    host: ${DB_HOST:127.0.0.1}
+#    port: 5432
+#    database: dev_school_db
+#    username: ${DB_USER_NAME:dev_school_admin} #edit
+#    password: ${DB_PASSWORD:4ea0b60ff37d4a139584309f8} #edit
+#    url: ${DB URL:r2dbc:pool:postgresql://ulia-dev.smartsafeschool.com:5432/dev_school_db} #edit

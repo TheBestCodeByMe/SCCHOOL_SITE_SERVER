@@ -22,7 +22,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +36,7 @@ public class AutorizationController {
     AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRespository;
+    UserRepository userRepository;
 
     @Autowired
     PupilRepository pupilRepository;
@@ -82,7 +81,7 @@ public class AutorizationController {
 
     @PostMapping("/signUp")
     public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signupRequest) {
-                if (userRespository.existsByLogin(signupRequest.getLogin())) {
+                if (userRepository.existsByLogin(signupRequest.getLogin())) {
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username is exist"));
@@ -139,8 +138,8 @@ public class AutorizationController {
             });
         }
         user.setRoles(roles);
-        userRespository.save(user);
-        User userForId = userRespository.findByLogin(user.getLogin()).orElse(null);
+        userRepository.save(user);
+        User userForId = userRepository.findByLogin(user.getLogin()).orElse(null);
 
         Set<Role> role = new HashSet<>();
         role.add(new Role(ERole.ROLE_PUPIL));

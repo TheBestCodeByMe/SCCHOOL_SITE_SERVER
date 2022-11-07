@@ -14,7 +14,7 @@ public class FBInitialize {
     public void initialize() {
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("school-site-b5f25-firebase-adminsdk-8xxw8-d5144a006e.json");
+                    new FileInputStream("src/main/resources/school-site-b5f25-firebase-adminsdk-8xxw8-d5144a006e.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
