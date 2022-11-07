@@ -1,0 +1,25 @@
+name: SonarCloud
+
+on: # описание события, по которому будет запускаться скрипт
+  pull_request: # запускать при каждом пуше в gitHub_Actions и создании пуллл-реквестов
+    types: [opened, synchroniza, reopened]
+  push:
+    branches:
+      - 'gitHub_Actions'
+
+jobs:
+  sonarcloud:
+    runs-on: windows-latest #ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.17
+      - name: Analyze with SonarCloud
+# set environment variables:
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} # это встроенный токен, который генерит гитхаб, с помощью него sonarcloud[bot] сможет авторизоваться в гите, чтобы оставлять нам сообщения в пулл-реквестах.
+#       run sonar maven plugin:
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=SCCHOOL_SITE_SERVER -Dsonar.organization=TheBestCodeByMe -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.coverage.jacoco.xmlReportPaths=./target/site/jacoco/jacoco.xml
