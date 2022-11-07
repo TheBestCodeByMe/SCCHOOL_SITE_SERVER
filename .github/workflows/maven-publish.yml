@@ -5,7 +5,7 @@ name: Maven Package
 
 on:
   release:
-    types: [created]
+    types: [push]
 
 jobs:
   build:
@@ -20,9 +20,9 @@ jobs:
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: 1.17
         distribution: 'adopt'
-        server-id: uliaKolosovich #github # Value of the distributionManagement/repository/id field of the pom.xml
+        #server-id: uliaKolosovich #github # Value of the distributionManagement/repository/id field of the pom.xml
         #settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
@@ -31,4 +31,4 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn --batch-mode deploy #mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
-        GITHUB_TOKEN: ${{ ULIA_KOLOSOVICH }} #secrets.GITHUB_TOKEN }} #github.token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #ULIA_KOLOSOVICH }} #secrets.GITHUB_TOKEN }} #github.token }}
