@@ -1,0 +1,21 @@
+name: Build
+
+on: # описание события, по которому будет запускаться скрипт
+  pull_request: # запускать при каждом пуше в gitHub_Actions и создании пуллл-реквестов
+    branches:
+      - '*'
+  push:
+    branches:
+      - 'gitHub_Actions'
+
+jobs:
+  build:
+    runs-on: windows-10 #ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+      - name: Maven Package
+        run: mvn -B clean package -DskipTests
