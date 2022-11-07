@@ -168,9 +168,9 @@ class UserServiceTest {
     @Test
     void getUserById() {
     }
-/*
+
     @Test
     void getSaveDiary() {
     }
-    */
+
 }
