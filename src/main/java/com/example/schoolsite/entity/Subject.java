@@ -1,29 +1,25 @@
 package com.example.schoolsite.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.google.firebase.database.annotations.NotNull;
+import io.leangen.graphql.annotations.GraphQLQuery;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
 @NoArgsConstructor
-@Table(name="subject")
 @ToString
 public class Subject {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue //(strategy = GenerationType.AUTO)
+    @GraphQLQuery(name="id", description = "A subject`s id")
     private Long id;
-    @Column(name = "subject_name", nullable = false)
-    private String subjectName;
-
-    public Subject(String subjectName) {
-        this.subjectName = subjectName;
-    }
+    //@Column(name = "subjectName", nullable = false)
+    @GraphQLQuery(name="subject_name", description = "A subject`s name")
+    private @NotNull
+    String subjectName;
 
     @Override
     public boolean equals(Object o) {
