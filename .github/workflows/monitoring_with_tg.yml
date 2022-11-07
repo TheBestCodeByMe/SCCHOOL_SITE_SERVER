@@ -21,7 +21,7 @@ jobs:
           echo "It's OK"
 
       - name: send alert in telegram
-          if: ${{ failure() }}
+          #if: ${{ failure() }}
           uses: appleboy/telegram-action@master
           with:
             to: ${{ secrets.TELEGRAM_TO }}
