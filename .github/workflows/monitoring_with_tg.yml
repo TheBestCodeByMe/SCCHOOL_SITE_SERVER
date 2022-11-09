@@ -24,7 +24,7 @@ jobs:
           echo "It's OK"
 
       - name: send alert in telegram
-          uses: appleboy/telegram-action@master
+          uses: school_server_bot/telegram-action@master
           with:
             to: ${{ secrets.TELEGRAM_TO }}
             token: ${{ secrets.TELEGRAM_TOKEN }}
