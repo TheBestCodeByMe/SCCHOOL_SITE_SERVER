@@ -20,6 +20,19 @@ import java.util.concurrent.ExecutionException;
 @RestController
 @RequestMapping("/api/v1/askQuestion")
 public class AskQuestionController {
+    @GetMapping("/h")
+    public String getQuestion()  {
+        return "<!DOCTYPE HTML>\n" +
+                "<html>\n" +
+                "<head>\n" +
+                "    <title>Getting Started: Serving Web Content</title> \n" +
+                "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "    <p>Get your greeting <a href=\"/greeting\">here</a></p>\n" +
+                "</body>\n" +
+                "</html>";
+    }
 
     @Autowired
     private QuestionService questionService;
