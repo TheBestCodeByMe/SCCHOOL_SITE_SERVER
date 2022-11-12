@@ -1,6 +1,7 @@
 package com.example.schoolsite.services;
 
 import com.example.schoolsite.entity.Question;
+import com.example.schoolsite.entity.QuestionForDev;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -14,11 +15,18 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class QuestionService {
     public static final String COL_NAME = "questionFromUsers";
+    public static final String COL_NAME_DEV = "questionFromUsersForDevelopers";
 
     public String saveQuestion(Question question) throws InterruptedException, ExecutionException {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME).document(question.getCode()).set(question);
         return collectionsApiFuture.get().getUpdateTime().toString();
+    }
+
+    public void saveQuestionForDevelopers(QuestionForDev question) throws InterruptedException, ExecutionException {
+        Firestore dbFirestore = FirestoreClient.getFirestore();
+        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection(COL_NAME_DEV).document(question.getCode()).set(question);
+        collectionsApiFuture.get();
     }
 
     public Question getQuestionDetails(String code) throws InterruptedException, ExecutionException {
