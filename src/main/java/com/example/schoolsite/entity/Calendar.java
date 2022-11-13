@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Calendar {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="calendar_id")
     private Long id;
     @Column(name = "calendar_semester", nullable = false)
     private int semesterID;

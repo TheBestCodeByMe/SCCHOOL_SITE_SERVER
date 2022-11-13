@@ -403,3 +403,7 @@ values (1,'root','root','root','root','root','root');
 
 insert into classroom (classroom_id, teacher_classroom_id, classroom_name)
 values (1, 1, '11');
+
+insert into users (user_id, user_login, user_password, user_status, user_link) values (1,'root','root','root','root');
+
+insert into role_user (roles_users_id, role_id, user_id) VALUES (1, 3, 1);

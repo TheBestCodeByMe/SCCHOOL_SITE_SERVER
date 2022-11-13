@@ -86,7 +86,6 @@ CREATE TABLE if not exists calendar
     calendar_semester  int    not null,
     calendar_week_day  int    not null,
     lesson_calendar_id bigint not null
-    -- LessonTime  VARCHAR(20) not null
 );
 
 -- Расписание. Хранит пересечение всех всех таблиц

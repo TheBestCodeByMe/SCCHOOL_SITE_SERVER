@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  database:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_volume:/var/lib/mysql/
+  backendserver:
+    build: ./SCCHOOL_SITE_SERVER/
+    ports:
+      - "8081"
+    links:
+      - database
+    depends_on:
+      - database
+    restart: always
+  frontend:
+    build: ./client/
+    links:
+      - backendserver
+    depends_on:
+      - backendserver
+    ports:
+      - "4200"
+volumes:
+  mysql_compose_volume:

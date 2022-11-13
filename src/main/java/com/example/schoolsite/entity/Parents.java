@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Parents {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="parents_id")
     private Long id;
     @Column(name = "parents_name_mom", nullable = false)
     private String nameMom;
