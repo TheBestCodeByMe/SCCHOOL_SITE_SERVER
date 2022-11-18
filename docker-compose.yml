@@ -1,30 +1,52 @@
 version: '3.8'
 services:
-  database:
-    image: mysql:latest
-    container_name: mysql
+  backendserver:
+    build: . #/SCCHOOL_SITE_SERVER/
+    ports:
+      - 8080:8080
+    links:
+      - mysql
+    depends_on:
+      - mysql
+    restart: always
+    command: sh -c './wait-for mysql:3306 -- npm start'
+  mysql:
+    build: ./src/main/resources/sql/ #/SCCHOOL_SITE_SERVER/src/main/resources/sql/create_mysql.sql
+    ports:
+      - 3307:3306
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3306:3306"
+      MYSQL_DATABASE: dev_school_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     volumes:
-      - mysql_volume:/var/lib/mysql/
-  backendserver:
-    build: ./SCCHOOL_SITE_SERVER/
-    ports:
-      - "8081"
-    links:
-      - database
-    depends_on:
-      - database
-    restart: always
-  frontend:
-    build: ./client/
-    links:
-      - backendserver
-    depends_on:
-      - backendserver
-    ports:
-      - "4200"
+      - db-data:/var/lib/mysql
+    tty: true
+  #frontend:
+    #build: ./client/
+    #links:
+    #  - backendserver
+    #depends_on:
+    #  - backendserver
+   # ports:
+    #  - "4200"
+#volumes:
+  #mysql_compose_volume:
+# Networks to be created to facilitate communication between containers
+# Volumes
+      #database:
+      #image: mysql:8.0.17
+      #container_name: mysql
+      #environment:
+      #MYSQL_ROOT_PASSWORD: root
+      #ports:
+      #- "3306:3306"
+      #volumes:
+      #- mysql_volume:/var/lib/mysql/
+    #- ./src/main/resources/sql/create_mysql.sql:/docker-entrypoint-initdb.d/0_init.sql
 volumes:
-  mysql_compose_volume:
+  db-data:
+
+networks:
+  turingmysql:

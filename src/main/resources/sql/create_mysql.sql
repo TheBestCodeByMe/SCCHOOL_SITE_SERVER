@@ -1,3 +1,8 @@
+create database dev_school_db;
+use dev_school_db;
+CREATE USER root@localhost;
+GRANT ALL PRIVILEGES ON dev_school_db.* To root@localhost IDENTIFIED BY root;
+
 create table if not exists users
 (
     user_id       bigint primary key,
@@ -136,3 +141,23 @@ CREATE TABLE if not exists questions_from_users
     questions_from_users_response varchar(10000),
     questions_from_users_flag     boolean
 );
+
+insert into role (role_id, role_name)
+values (1, 'ROLE_PUPIL');
+
+insert into role (role_id, role_name)
+values (2, 'ROLE_TEACHER');
+
+insert into role (role_id, role_name)
+values (3, 'ROLE_DIRECTOR');
+
+insert into teacher (teacher_id, teacher_name, teacher_lastname, teacher_patronymic, teacher_email,
+                     teacher_qualification, teacher_position)
+values (1,'root','root','root','root','root','root');
+
+insert into classroom (classroom_id, teacher_classroom_id, classroom_name)
+values (1, 1, '11');
+
+insert into users (user_id, user_login, user_password, user_status, user_link) values (1,'root','root','root','root');
+
+insert into role_user (roles_users_id, role_id, user_id) VALUES (1, 3, 1);
