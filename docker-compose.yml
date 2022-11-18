@@ -39,15 +39,15 @@ services:
       #DB_USER: root #spring.datasource.password: root
       #DB_PASSWORD: root #spring.datasource.password
       #DB_NAME: deb_school_db
-  frontend:
-    hostname: uliaKolosovich_client
-    build: /home/user/Projects/uonmap/school #./client/
-    links:
-      - backendserver
-    depends_on:
-      - backendserver
-    ports:
-      - "4200"
+  #frontend:
+    #hostname: uliaKolosovich_client
+    #build: /home/user/Projects/uonmap/school #./client/
+   # links:
+    #  - backendserver
+  #  depends_on:
+   #   - backendserver
+  #  ports:
+   #   - "4200"
 #volumes:
   #mysql_compose_volume:
 # Networks to be created to facilitate communication between containers
