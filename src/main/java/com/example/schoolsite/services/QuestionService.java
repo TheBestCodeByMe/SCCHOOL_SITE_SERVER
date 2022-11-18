@@ -33,7 +33,6 @@ public class QuestionService {
         Firestore dbFirestore = FirestoreClient.getFirestore();
         DocumentReference documentReference = dbFirestore.collection(COL_NAME).document(code);
         ApiFuture<DocumentSnapshot> future = documentReference.get();
-        ;
 
         DocumentSnapshot document = future.get();
 
