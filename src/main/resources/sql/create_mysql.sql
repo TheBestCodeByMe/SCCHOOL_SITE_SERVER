@@ -1,8 +1,3 @@
-create database dev_school_db;
-use dev_school_db;
-CREATE USER root@localhost;
-GRANT ALL PRIVILEGES ON dev_school_db.* To root@localhost IDENTIFIED BY root;
-
 create table if not exists users
 (
     user_id       bigint primary key,
