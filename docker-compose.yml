@@ -10,6 +10,10 @@ services:
       - mysql
     restart: always
     command: sh -c './wait-for mysql:3306 -- npm start'
+    environment:
+      spring.jdbc.url: jdbc:mysql://0.0.0.0:3307/dev_school_db
+      spring.jdbc.username: root
+      spring.jdbc.password: root
   mysql:
     build: ./src/main/resources/sql/ #/SCCHOOL_SITE_SERVER/src/main/resources/sql/create_mysql.sql
     ports:
