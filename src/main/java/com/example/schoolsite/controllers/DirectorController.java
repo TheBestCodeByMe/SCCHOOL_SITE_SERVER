@@ -1,18 +1,17 @@
 package com.example.schoolsite.controllers;
 
 import com.example.schoolsite.dto.ClassroomDTO;
-import com.example.schoolsite.dto.PupilDTO;
 import com.example.schoolsite.entity.Classroom;
-import com.example.schoolsite.entity.Parents;
-import com.example.schoolsite.entity.Pupil;
 import com.example.schoolsite.entity.Teacher;
 import com.example.schoolsite.map.Mapper;
 import com.example.schoolsite.workWithDatabase.repo.ClassroomRepository;
-import com.example.schoolsite.workWithDatabase.repo.ParentsRepository;
-import com.example.schoolsite.workWithDatabase.repo.PupilRepository;
 import com.example.schoolsite.workWithDatabase.repo.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;

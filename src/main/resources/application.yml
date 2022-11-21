@@ -1,3 +1,17 @@
+fireBase:
+  collection: questionForDev
+  dbBaseUrl: https://qwer-a2d4b-default-rtdb.firebaseio.com
+  authFileLocation: qwer-a2d4b-firebase-adminsdk-5fw9y-a89fa23924.json
+  ideaTimeSpanInMinute: 5
+  liveTrackingIntervalInSecond: 2
+
+googleMap:
+  baseUrl: https://maps.googleapis.com/maps/api/distancematrix/json
+  apiKey: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  mode: bus
+
+
+
 #fireBase:
 #  collection: tripLiveTracking
 #  dbBaseUrl: https://school-site-b5f25-default-rtdb.firebaseio.com/

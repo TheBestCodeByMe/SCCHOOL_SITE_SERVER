@@ -2,41 +2,30 @@ package com.example.schoolsite.services;
 
 import com.example.schoolsite.entity.Subject;
 import com.example.schoolsite.workWithDatabase.repo.SubjectRepository;
-import io.leangen.graphql.annotations.GraphQLArgument;
-import io.leangen.graphql.annotations.GraphQLMutation;
-import io.leangen.graphql.annotations.GraphQLQuery;
-import io.leangen.graphql.spqr.spring.annotations.GraphQLApi;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
-@GraphQLApi
 public class SubjectService {
     private final SubjectRepository subjectRepository;
-
-    public SubjectService(SubjectRepository subjectRepository){
-        this.subjectRepository = subjectRepository;
+    public SubjectService(final SubjectRepository subjectRepository) {
+        this.subjectRepository = subjectRepository ;
     }
-
-    @GraphQLQuery(name="subjects")
-    public List<Subject> getSubjetcs(){
-        return subjectRepository.findAll();
+    @Transactional
+    public Subject createSubject(final String subjectName) {
+        final Subject subject = new Subject();
+        subject.setSubjectName(subjectName);
+        return this.subjectRepository.save(subject);
     }
-
-    @GraphQLQuery(name="subject")
-    public Optional<Subject> getSubjectById(@GraphQLArgument(name="id") Long id){
-        return subjectRepository.findById(id);
+    @Transactional(readOnly = true)
+    public List<Subject> getAllSubjects(final int count) {
+        return this.subjectRepository.findAll().stream().limit(count).collect(Collectors.toList());
     }
-
-    @GraphQLMutation(name="saveSubject")
-    public Subject saveSubject(@GraphQLArgument(name="subject") Subject subject){
-        return subjectRepository.save(subject);
-    }
-
-    @GraphQLMutation(name="deleteSubject")
-    public void deleteSubject(@GraphQLArgument(name="id") Long id){
-        subjectRepository.deleteById(id);
+    @Transactional(readOnly = true)
+    public Optional<Subject> getSubject(final Long id) {
+        return this.subjectRepository.findById(id);
     }
 }

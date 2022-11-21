@@ -1,25 +1,25 @@
 package com.example.schoolsite.entity;
 
-import com.google.firebase.database.annotations.NotNull;
-import io.leangen.graphql.annotations.GraphQLQuery;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Objects;
 
+@Data
 @Entity
-@Getter @Setter
-@NoArgsConstructor
-@ToString
-public class Subject {
+@Getter
+@Setter
+public class Subject implements Serializable {
     @Id
     @GeneratedValue //(strategy = GenerationType.AUTO)
-    @GraphQLQuery(name="id", description = "A subject`s id")
+    @Column(name="subject_id", nullable = false)
     private Long id;
-    //@Column(name = "subjectName", nullable = false)
-    @GraphQLQuery(name="subject_name", description = "A subject`s name")
-    private @NotNull
-    String subjectName;
+    @Column(name = "subject_name", nullable = false)
+    private String subjectName;
 
     @Override
     public boolean equals(Object o) {

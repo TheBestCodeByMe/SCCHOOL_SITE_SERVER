@@ -5,9 +5,13 @@ import com.example.schoolsite.dto.PupilDTO;
 import com.example.schoolsite.dto.SheduleDTO;
 import com.example.schoolsite.entity.*;
 import com.example.schoolsite.exception.ResourceNotFoundException;
+import com.example.schoolsite.graphQl.SubjectMutation;
+import com.example.schoolsite.graphQl.SubjectQuery;
 import com.example.schoolsite.map.Mapper;
 import com.example.schoolsite.workWithDatabase.repo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200") // убрать)))
@@ -101,13 +106,69 @@ public class EditUsersController { // TODO: убрать возможность 
         return null;
     }
 
+    @Autowired
+    SubjectMutation subjectMutation = new SubjectMutation();
+
     @PostMapping("/createSubject")
     public Subject createSubject(@Validated @RequestBody Subject subject) {
         if (subjectRepository.findBySubjectName(subject.getSubjectName()) == null) {
-            subjectRepository.save(subject);
+            //subjectRepository.save(subject);
+            subjectMutation.createSubject(subject.getSubjectName());
             return subject;
         }
         return null;
+    }
+
+    @Autowired
+    SubjectQuery subjectQuery = new SubjectQuery();
+
+    @GetMapping("/allSubjects")
+    public ResponseEntity<String> getSubjects() {
+        List<Subject> subjects = subjectQuery.getSubjects(10);
+
+        return ResponseEntity.ok(String.format("""
+                                <!DOCTYPE html>
+                                <html>
+
+                                <head>
+                                  <meta charset="utf-8">
+                                  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+                                  <title>Предметы</title>
+                                </head>
+
+                                <body id="page-top">
+                                <div id="wrapper">
+                                  <div class="d-flex flex-column" id="content-wrapper">
+                                    <div id="content">
+                                      <div class="container-fluid">
+                                        <div class="row">
+                                          <div class="col">
+                                            <div class="table-responsive">
+                                              <table class="table">
+                                                <thead>
+                                                <tr>
+                                                  <th>Предмет</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                  <td>%s</td>
+                                <tr></tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <footer class="bg-white sticky-footer">
+                      <div class="container my-auto">
+                        <div class="text-center my-auto copyright"><span>Колосович Ульяна © Brand 2022</span></div>
+                      </div>
+                    </footer>
+                </div>
+                </body>
+
+                </html>""", subjects));
     }
 
     @PostMapping("/createSheduleDTO")

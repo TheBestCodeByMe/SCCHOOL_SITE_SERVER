@@ -1,17 +1,13 @@
 package com.example.schoolsite.controllers;
 
-import com.example.schoolsite.dto.DiaryDTO;
-import com.example.schoolsite.dto.PupilDTO;
-import com.example.schoolsite.entity.*;
-import com.example.schoolsite.map.Mapper;
+import com.example.schoolsite.entity.Question;
+import com.example.schoolsite.entity.QuestionForDev;
 import com.example.schoolsite.services.QuestionService;
-import com.example.schoolsite.workWithDatabase.repo.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController

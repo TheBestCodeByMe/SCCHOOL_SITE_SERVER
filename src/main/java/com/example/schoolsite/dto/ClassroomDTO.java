@@ -6,7 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 @Getter

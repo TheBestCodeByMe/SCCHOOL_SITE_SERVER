@@ -10,6 +10,7 @@ import com.example.schoolsite.workWithDatabase.repo.PupilRepository;
 import com.example.schoolsite.workWithDatabase.repo.TeacherRepository;
 import com.example.schoolsite.workWithDatabase.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

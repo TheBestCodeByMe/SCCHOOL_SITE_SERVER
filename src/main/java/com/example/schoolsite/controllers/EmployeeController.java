@@ -3,6 +3,7 @@ package com.example.schoolsite.controllers;
 import com.example.schoolsite.entity.Teacher;
 import com.example.schoolsite.workWithDatabase.repo.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

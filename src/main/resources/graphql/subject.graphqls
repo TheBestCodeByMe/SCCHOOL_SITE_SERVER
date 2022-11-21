@@ -1,0 +1,11 @@
+type Subject {
+id: ID!,
+subjectName: String
+}
+type Query {
+subjects(count: Int):[Subject]
+subject(id: ID):Subject
+}
+type Mutation {
+createSubject(subjectName: String):Subject
+}

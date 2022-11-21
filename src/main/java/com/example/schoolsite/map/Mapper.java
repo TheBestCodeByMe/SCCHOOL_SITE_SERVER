@@ -4,9 +4,7 @@ import com.example.schoolsite.dto.*;
 import com.example.schoolsite.entity.*;
 import com.example.schoolsite.enumiration.ERole;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Mapper {
