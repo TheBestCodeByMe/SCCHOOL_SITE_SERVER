@@ -1,25 +1,77 @@
-name-template: 'v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
-categories:
-  - title: ' New Features'
-    labels:
-      - 'type:features'
+##name-template: 'v$NEXT_PATCH_VERSION'
+##tag-template: 'v$NEXT_PATCH_VERSION'
+##categories:
+##  - title: ' New Features'
+##    labels:
+##      - 'type:features'
   # в эту категорию собираем все PR с меткой type:features
 
-  - title: ' Bugs Fixes'
-    labels:
-      - 'type:fix'
+##  - title: ' Bugs Fixes'
+##    labels:
+##      - 'type:fix'
   # аналогично для метки type:fix и т.д.
 
-  - title: ' Documentation'
-    labels:
-      - 'type:documentation'
+##  - title: ' Documentation'
+##    labels:
+##      - 'type:documentation'
 
-  - title: ' Configuration'
-    labels:
-      - 'type:config'
+##  - title: ' Configuration'
+##    labels:
+##      - 'type:config'
 
-change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+##change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+##template: |
+  ## Changes
+##  $CHANGES
+
 template: |
   ## Changes
   $CHANGES
+change-template: '- **$TITLE** (#$NUMBER)'
+
+version-template: "$MAJOR.$MINOR.$PATCH"
+name-template: '$RESOLVED_VERSION'
+tag-template: '$RESOLVED_VERSION'
+
+categories:
+  - title: 'Features'
+    labels:
+      - 'feature'
+      - 'type:common'
+  - title: 'Bug Fixes'
+    labels:
+      - 'fix'
+      - 'bugfix'
+      - 'bug'
+      - 'hotfix'
+      - 'dependencies'
+  - title: 'Maintenance'
+    labels:
+      - 'type:build'
+      - 'refactoring'
+      - 'theme:docs'
+      - 'type:tests'
+
+change-title-escapes: '\<*_&'
+
+version-resolver:
+  major:
+    labels:
+      - major
+      - refactoring
+  minor:
+    labels:
+      - feature
+      - minor
+      - type:common
+  patch:
+    labels:
+      - patch
+      - type:build
+      - bug
+      - bugfix
+      - hotfix
+      - fix
+      - theme:docs
+      - type:tests
+  default: patch
