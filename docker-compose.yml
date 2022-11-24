@@ -2,7 +2,7 @@ version: '3.8'
 services:
   mysql:
     hostname: uliaKolosovich_mysql
-    build: ./src/main/resources/sql/ #/SCCHOOL_SITE_SERVER/src/main/resources/sql/create_mysql.sql
+    build: ./src/main/resources/sql/ #./src/main/resources/sql/ #/SCCHOOL_SITE_SERVER/src/main/resources/sql/create_mysql.sql
     ports:
       - '3306:3306'
     restart: always
@@ -18,7 +18,7 @@ services:
     networks:
       - mysql-db
   backendserver:
-    build: . #/SCCHOOL_SITE_SERVER/
+    build: .
     hostname: uliaKolosovich_server
     ports:
       - "8080:8080"
@@ -39,15 +39,17 @@ services:
       #DB_USER: root #spring.datasource.password: root
       #DB_PASSWORD: root #spring.datasource.password
       #DB_NAME: deb_school_db
-  #frontend:
-    #hostname: uliaKolosovich_client
-    #build: /home/user/Projects/uonmap/school #./client/
-   # links:
-    #  - backendserver
-  #  depends_on:
-   #   - backendserver
-  #  ports:
-   #   - "4200"
+  frontend:
+    hostname: uliaKolosovich_client
+    build: ./client/
+    links:
+      - backendserver
+    depends_on:
+      - backendserver
+    ports:
+      - "4200"
+    networks:
+      - mysql-db
 #volumes:
   #mysql_compose_volume:
 # Networks to be created to facilitate communication between containers
