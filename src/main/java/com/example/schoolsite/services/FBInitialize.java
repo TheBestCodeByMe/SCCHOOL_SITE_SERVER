@@ -14,7 +14,7 @@ public class FBInitialize {
     public void initialize() {
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("src/main/resources/qwer-a2d4b-firebase-adminsdk-5fw9y-a89fa23924.json");
+                    new FileInputStream("src/main/resources/qwer-a2d4b-firebase-adminsdk-5fw9y-bd3d855fb9.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount)).setDatabaseUrl("https://qwer-a2d4b-default-rtdb.firebaseio.com")
