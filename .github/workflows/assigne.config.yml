@@ -1,0 +1,13 @@
+addReviewers: true
+numberOfReviewers: 1
+reviewers:
+  - TheBestCodeByMe
+
+addAssignees: true
+assignees:
+  - TheBestCodeByMe
+numberOfAssignees: 1
+
+skipKeywords:
+  - wip
+  - draft

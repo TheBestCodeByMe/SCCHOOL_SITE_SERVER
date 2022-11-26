@@ -21,6 +21,7 @@ import java.util.Set;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="user_id")
     private Long id;
     @Column(name = "user_login", nullable = false)
     private String login;

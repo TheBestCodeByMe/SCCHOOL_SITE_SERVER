@@ -17,8 +17,9 @@ import java.util.Objects;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="teacher_id")
     private Long id;
-    @Column(name = "user_id")
+    @Column(name = "user_teacher_id", nullable = true)
     private long userId; // TODO: сделать внешним ключом
     @Column(name = "teacher_name", nullable = false)
     private String name;

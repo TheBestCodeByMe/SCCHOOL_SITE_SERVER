@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="classroom_id")
     private Long id;
     @Column(name = "teacher_classroom_id", nullable = false)
     private Long classroomTeacherId; // TODO: сделать внешним ключом

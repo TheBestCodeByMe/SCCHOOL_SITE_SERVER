@@ -16,6 +16,7 @@ import com.example.schoolsite.workWithDatabase.repo.RoleRepository;
 import com.example.schoolsite.workWithDatabase.repo.TeacherRepository;
 import com.example.schoolsite.workWithDatabase.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,12 +26,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/auth")
+//@ConditionalOnProperty(name = "false", havingValue = "false")
 public class AutorizationController {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -55,6 +59,9 @@ public class AutorizationController {
 
     @PostMapping("/signIn")
     public ResponseEntity<?> authUser(@RequestBody LoginRequest loginRequest) {
+        //Set<String> role = new HashSet<String>();
+        //role.add("ROLE_DIRECTOR");
+        //registerUser(new SignUpRequest("root", "root", "root", "root", "root", "root", role, "unBlock", "root"));
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),

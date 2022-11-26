@@ -4,7 +4,6 @@ import com.example.schoolsite.dto.DiaryDTO;
 import com.example.schoolsite.entity.*;
 import com.example.schoolsite.workWithDatabase.repo.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

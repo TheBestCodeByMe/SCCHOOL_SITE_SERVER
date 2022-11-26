@@ -1,28 +1,6 @@
 package com.example.schoolsite.controllers;
 
-import com.example.schoolsite.entity.Role;
-import com.example.schoolsite.entity.User;
-import com.example.schoolsite.enumiration.ERole;
-import com.example.schoolsite.pojo.JwtResponse;
-import com.example.schoolsite.pojo.LoginRequest;
-import com.example.schoolsite.pojo.MessageResponse;
-import com.example.schoolsite.pojo.SignUpRequest;
-import com.example.schoolsite.workWithDatabase.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.stereotype.Controller;
-
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @RequiredArgsConstructor
 class AutorizationControllerTest {

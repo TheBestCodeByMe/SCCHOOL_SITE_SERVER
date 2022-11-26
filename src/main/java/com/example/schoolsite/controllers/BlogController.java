@@ -2,8 +2,8 @@ package com.example.schoolsite.controllers;
 
 import com.example.schoolsite.entity.User;
 import com.example.schoolsite.workWithDatabase.repo.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
